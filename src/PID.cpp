@@ -19,6 +19,8 @@ void PID::Init(double Kp_, double Ki_, double Kd_) {
   p_error = 0;
   i_error = 0;
   d_error = 0;
+  
+  prev_cte = 0;
 
 }
 
@@ -28,8 +30,11 @@ void PID::UpdateError(double cte) {
    * TODO: Update PID errors based on cte.
    */
   p_error = cte;
-  d_error = cte - d_error;
+  d_error = cte - prev_cte;
   i_error += cte;
+  
+  // Update the previous cte so it can be used next time
+  prev_cte = cte;
 
 }
 
