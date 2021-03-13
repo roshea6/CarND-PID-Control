@@ -38,6 +38,7 @@ class PID {
   double p_error;
   double i_error;
   double d_error;
+  double total_err;
 
   /**
    * PID Coefficients
@@ -45,6 +46,10 @@ class PID {
   double Kp;
   double Ki;
   double Kd;
+  
+  // Variables needed for PID calculations
+  double prev_cte;
+  double cte_sum;
 };
 
 #endif  // PID_H
