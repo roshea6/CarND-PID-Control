@@ -39,12 +39,12 @@ int main() {
    */
   
   // Initialize the PID controller with the coefficients
-  pid.Init(0.11, 0.0004, 0.6);
+  pid.Init(0.11, 0.00004, 0.6);
   
   // Create and initialize a speed control PID
   PID speed_pid;
   
-  speed_pid.Init(0.11, 0.0004, 0.6);
+  speed_pid.Init(0.11, 0.00004, 0.6);
 
   h.onMessage([&pid, &speed_pid](uWS::WebSocket<uWS::SERVER> ws, char *data, size_t length, 
                      uWS::OpCode opCode) {
@@ -77,7 +77,7 @@ int main() {
           // Calculate the steering angle from the PID controller
           steer_value = pid.TotalError();
           
-          double ideal_speed = 40;
+          double ideal_speed = 50;
           
           // Calculate the speed error
           double speed_diff = ideal_speed - speed;
